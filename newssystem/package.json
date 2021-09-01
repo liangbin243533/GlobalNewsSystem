@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "antd": "^4.16.13",
     "http-proxy-middleware": "^2.0.1",
     "react-router-dom": "^5.2.1"
   }
