@@ -1,10 +1,22 @@
-import React from 'react'
-import { Button } from 'antd';
+import React from "react";
+import { Button } from "antd";
+import axios from "axios";
 
 export default function Home() {
-    return (
-        <div>
-            <Button type="primary">Button</Button>
-        </div>
-    )
+  const ajax = () => {
+    // axios.post("http://localhost:8000/posts").then(res=>{
+    //     console.log(res.data)
+    // })
+    axios.put("http://localhost:8000/posts/2", {
+      title: "Yes",
+    });
+  };
+
+  return (
+    <div>
+      <Button type="primary" onClick={ajax}>
+        Button
+      </Button>
+    </div>
+  );
 }
