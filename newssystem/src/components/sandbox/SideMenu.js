@@ -30,7 +30,7 @@ function SideMenu(props) {
 
   const renderMenu = (menuList) => {
     return menuList.map((item) => {
-      if (item.children && checkPagePermission(item)) {
+      if (item.children?.length>0 && checkPagePermission(item)) {
         return (
           <SubMenu key={item.key} icon={iconList[item.key]} title={item.title}>
             {renderMenu(item.children)}
