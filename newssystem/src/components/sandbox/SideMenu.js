@@ -30,7 +30,7 @@ function SideMenu(props) {
 
   const renderMenu = (menuList) => {
     return menuList.map((item) => {
-      if (item.children?.length>0 && checkPagePermission(item)) {
+      if (item.children?.length > 0 && checkPagePermission(item)) {
         return (
           <SubMenu key={item.key} icon={iconList[item.key]} title={item.title}>
             {renderMenu(item.children)}
@@ -53,13 +53,18 @@ function SideMenu(props) {
       );
     });
   };
-
+const selectKeys = [props.location.pathname];
+const openKeys = ["/" + props.location.pathname.split("/")[1]];
   return (
     <Sider trigger={null} collapsible collapsed={false}>
-      <div className="logo">News Release System</div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-        {renderMenu(menu)}
-      </Menu>
+      <div style={{ display: "flex", height: "100%", flexDirection: "column" }}>
+        <div className="logo">News Release System</div>
+        <div style={{ flex: 1, overflow: "auto" }}>
+          <Menu theme="dark" mode="inline" selectedKeys={selectKeys} defaultOpenKeys={openKeys}>
+            {renderMenu(menu)}
+          </Menu>
+        </div>
+      </div>
     </Sider>
   );
 }
